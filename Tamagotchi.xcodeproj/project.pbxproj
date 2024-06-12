@@ -18,6 +18,8 @@
 		0316E6EA2C14960D00E6724D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316E6E92C14960D00E6724D /* MainViewController.swift */; };
 		0316E6ED2C1578FD00E6724D /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 0316E6EC2C1578FD00E6724D /* TextFieldEffects */; };
 		0316E6EF2C15A38B00E6724D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316E6EE2C15A38B00E6724D /* Data.swift */; };
+		0316E7382C19A14500E6724D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316E7372C19A14500E6724D /* SettingViewController.swift */; };
+		0316E73A2C19A32800E6724D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316E7392C19A32800E6724D /* SettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		0316E6E72C146DEE00E6724D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0316E6E92C14960D00E6724D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0316E6EE2C15A38B00E6724D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		0316E7372C19A14500E6724D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0316E7392C19A32800E6724D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				0316E6E72C146DEE00E6724D /* DetailViewController.swift */,
 				0316E6E92C14960D00E6724D /* MainViewController.swift */,
 				0316E6EE2C15A38B00E6724D /* Data.swift */,
+				0316E7372C19A14500E6724D /* SettingViewController.swift */,
+				0316E7392C19A32800E6724D /* SettingTableViewCell.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -161,6 +167,8 @@
 				0316E6EF2C15A38B00E6724D /* Data.swift in Sources */,
 				0316E6E62C1312BC00E6724D /* TamagotchiTableViewCell.swift in Sources */,
 				0316E6D32C130F6900E6724D /* ViewController.swift in Sources */,
+				0316E73A2C19A32800E6724D /* SettingTableViewCell.swift in Sources */,
+				0316E7382C19A14500E6724D /* SettingViewController.swift in Sources */,
 				0316E6E82C146DEE00E6724D /* DetailViewController.swift in Sources */,
 				0316E6EA2C14960D00E6724D /* MainViewController.swift in Sources */,
 				0316E6CF2C130F6900E6724D /* AppDelegate.swift in Sources */,

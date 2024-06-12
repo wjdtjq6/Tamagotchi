@@ -8,18 +8,19 @@
 import UIKit
 import SnapKit
 
+var buttonClicked = 0
+
 class ViewController: UIViewController {
         
     let tableView = UITableView()
-    let tableViewCell = UITableViewCell()
     
     let navigationcontroller = UINavigationController(rootViewController: DetailViewController())
     
-    static var image0 = "1-9"
-    static var image1 = "2-9"
-    static var image2 = "3-9"
-    
-    static var whatView = 0
+//    static var image0 = "1-9"
+//    static var image1 = "2-9"
+//    static var image2 = "3-9"
+//    
+//    static var whatView = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TamagotchiTableViewCell.self, forCellReuseIdentifier: "TamagotchiTableViewCell")
-        view.addSubview(tableViewCell)
+        //view.addSubview(tableViewCell)
     }
     func configureLayout() {
         tableView.snp.makeConstraints { make in
@@ -60,13 +61,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TamagotchiTableViewCell", for: indexPath) as! TamagotchiTableViewCell
         
         if indexPath.row == 0 {
-            cell.firstImageButton.setImage(UIImage(named: ViewController.image0), for: .normal)
+            cell.firstImageButton.setImage(UIImage(named: "1-9"), for: .normal)
             cell.firstLabelButton.setTitle("따끔따끔 다마고치", for: .normal)
             
-            cell.secondImageButton.setImage(UIImage(named: ViewController.image1), for: .normal)
+            cell.secondImageButton.setImage(UIImage(named: "2-9"), for: .normal)
             cell.secondLabelButton.setTitle("방실방실 다마고치", for: .normal)
             
-            cell.thirdImageButton.setImage(UIImage(named: ViewController.image2), for: .normal)
+            cell.thirdImageButton.setImage(UIImage(named: "3-9"), for: .normal)
             cell.thirdLabelButton.setTitle("반짝반짝 다마고치", for: .normal)
             
             cell.firstImageButton.addTarget(self, action: #selector(firstButtonClicked), for: .touchUpInside)
@@ -93,17 +94,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         //3.회면 띄우기
         navigationcontroller.modalPresentationStyle = .overFullScreen
         present(navigationcontroller, animated: true)
-        ViewController.whatView = 0
+        buttonClicked = 0
+        print(#function,buttonClicked)
+        
+
     }
     @objc func secondButtonClicked() {
         navigationcontroller.modalPresentationStyle = .overFullScreen
         present(navigationcontroller, animated: true)
-        ViewController.whatView = 1
+        buttonClicked = 1
+        print(#function,buttonClicked)
+
     }
     @objc func thirdButtonClicked() {
         navigationcontroller.modalPresentationStyle = .overFullScreen
         present(navigationcontroller, animated: true)
-        ViewController.whatView = 2
+        buttonClicked = 2
+        print(#function,buttonClicked)
+
     }
+    
     
 }

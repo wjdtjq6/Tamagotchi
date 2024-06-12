@@ -45,7 +45,9 @@ class DetailViewController: UIViewController {
     @objc func startButtonClicked() {
         let mvc = MainViewController()
         
-        navigationController?.pushViewController(mvc, animated: true)
+        navigationController?.pushViewController(mvc, animated: false)
+        //mvc.modalPresentationStyle = .fullScreen
+        //navigationController?.present(mvc, animated: true)
     }
     func configureLayout() {
         uiView.snp.makeConstraints { make in
@@ -92,22 +94,26 @@ class DetailViewController: UIViewController {
         
         uiView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         uiView.layer.cornerRadius = 10
-        if ViewController.whatView == 0 {
-            tamaImage.image = UIImage(named: UserDefaults.standard.string(forKey: "meal")!)
+        if buttonClicked == 0 {
+            tamaImage.image = UIImage(named: "1-9")
             tamaLabel.text = "따끔따끔 다마고치"
             descriptionLabel.text = "저는 따끔따끔 다마고치입니다. 키는 100km 몸무게는 150톤이에요 성격은 화끈하고 날라다닙니당~! 열심히 잘 먹고 잘 클 자신은 있답니당 방실방실!"
+            print(0)
+
         }
-        else if ViewController.whatView == 1 {
-            tamaImage.image = UIImage(named: ViewController.image1)
+        else if buttonClicked == 1 {
+            tamaImage.image = UIImage(named: "2-9")
             tamaLabel.text = "방실방실 다마고치"
             descriptionLabel.text = "저는 방실방실 다마고치입니다. 키는 100km 몸무게는 150톤이에요 성격은 화끈하고 날라다닙니당~! 열심히 잘 먹고 잘 클 자신은 있답니당 방실방실!"
+            print(1)
         }
         else {
-            tamaImage.image = UIImage(named: ViewController.image2)
+            tamaImage.image = UIImage(named: "3-9")
             tamaLabel.text = "반짝반짝 다마고치"
             descriptionLabel.text = "저는 반짝반짝 다마고치입니다. 키는 100km 몸무게는 150톤이에요 성격은 화끈하고 날라다닙니당~! 열심히 잘 먹고 잘 클 자신은 있답니당 방실방실!"
+            print(2)
         }
-        
+        reloadInputViews()
         tamaLabel.font = .boldSystemFont(ofSize: 13)
         tamaLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         tamaLabel.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor

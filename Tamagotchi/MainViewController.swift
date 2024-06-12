@@ -9,6 +9,40 @@ import UIKit
 import SnapKit
 import TextFieldEffects
 
+//class Level {
+//    var mealData: [Int] = [0,0,0]
+//    var waterData: [Int] = [0,0,0]
+//    var levelData: [Int] = [0,0,0]
+//    var levelCalculation = 1.0
+//    
+//    func calculateLevel() {
+//        for i in 0...2
+//        {
+//            levelCalculation = Double(mealData[i]/5 + waterData[i]/2)
+//            
+//            switch levelCalculation {
+//            case 0..<10 : levelData[i] = 1
+//            case 10..<20 : levelData[i] = 1
+//            case 20..<30 : levelData[i] = 2
+//            case 30..<40 : levelData[i] = 3
+//            case 40..<50 : levelData[i] = 4
+//            case 50..<60 : levelData[i] = 5
+//            case 60..<70 : levelData[i] = 6
+//            case 70..<80 : levelData[i] = 7
+//            case 80..<90 : levelData[i] = 8
+//            case 90..<100 : levelData[i] = 9
+//            default:
+//                levelData[i] = 10
+//            }
+//        }
+//    }
+//}
+var levelData = UserDefaults.standard.integer(forKey: "level")
+var waterData = UserDefaults.standard.integer(forKey: "water")
+var mealData = UserDefaults.standard.integer(forKey: "meal")
+var imageData = UserDefaults.standard.string(forKey: "image")
+var storys: [String] = ["히히힣히","하하하하하","호호홓호","울랄라","미키키키키키키킼","헤헤헤ㅔ헤헿","kifgdakjbds","너ㅜ웁ㅈ애ㅓㅐㅡㅈ비ㅏㅜ"]
+
 class MainViewController: UIViewController {
     
     let bubbleImage = UIImageView()
@@ -22,10 +56,6 @@ class MainViewController: UIViewController {
     let waterTextField = UITextField()
     let waterSeparator = UIView()
     let waterButton = UIButton(type: .system)
-        
-    var mealData: [Int] = [0,0,0]
-    var waterData: [Int] = [0,0,0]
-    var levelData: [Int] = [0,0,0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +76,7 @@ class MainViewController: UIViewController {
         
 
     }
+    
     func configureHirarchy() {
         view.addSubview(bubbleImage)
         view.addSubview(bubbleLabel)
@@ -68,27 +99,95 @@ class MainViewController: UIViewController {
     }
     @objc func mealButtonClicked() {
         if mealTextField.text == "" {
-            mealData[0] += 1
+            mealData += 1
         }
         else {
-            mealData[0] += Int(mealTextField.text!)!
+            mealData += Int(mealTextField.text!)!
             mealTextField.text = nil
         }
-        abilityLabel.text = "LV? \u{2022} 밥알 \(mealData[0])개 \u{2022} 물방울 \(waterData[0])개"
-        print(mealData)
+        UserDefaults.standard.set(mealData, forKey: "meal")
+        
+        levelData = waterData/2 + mealData/5
+        switch levelData {
+            case 0..<10 : levelData = 1
+            imageData = "1-1"
+            case 10..<20 : levelData = 1
+            imageData = "1-1"
+            case 20..<30 : levelData = 2
+            imageData = "1-2"
+            case 30..<40 : levelData = 3
+            imageData = "1-3"
+            case 40..<50 : levelData = 4
+            imageData = "1-4"
+            case 50..<60 : levelData = 5
+            imageData = "1-5"
+            case 60..<70 : levelData = 6
+            imageData = "1-6"
+            case 70..<80 : levelData = 7
+            imageData = "1-7"
+            case 80..<90 : levelData = 8
+            imageData = "1-8"
+            case 90..<100 : levelData = 9
+            imageData = "1-9"
+            default:
+                levelData = 10
+            imageData = "1-9"
+        }
+        UserDefaults.standard.set(levelData, forKey: "level")
+        UserDefaults.standard.set(imageData, forKey: "image")
+        
+        UserDefaults.standard.synchronize()
+        
+        abilityLabel.text = "LV\(levelData) \u{2022} 밥알 \(mealData)개 \u{2022} 물방울 \(waterData)개"
+        tamaImage.image = UIImage(named: imageData!)
+        bubbleLabel.text = storys.randomElement()
+
 
     }
     @objc func waterButtonClicked() {
         if waterTextField.text == "" {
-            waterData[0] += 1
+            waterData += 1
         }
         else {
-            waterData[0] += Int(waterTextField.text!)!
+            waterData += Int(waterTextField.text!)!
             waterTextField.text = nil
         }
-        abilityLabel.text = "LV? \u{2022} 밥알 \(mealData[0])개 \u{2022} 물방울 \(waterData[0])개"
-        print(waterData)
-
+        UserDefaults.standard.set(waterData, forKey: "water")
+        
+        levelData = waterData/2 + mealData/5
+        switch levelData {
+            case 0..<10 : levelData = 1
+            imageData = "1-1"
+            case 10..<20 : levelData = 1
+            imageData = "1-1"
+            case 20..<30 : levelData = 2
+            imageData = "1-2"
+            case 30..<40 : levelData = 3
+            imageData = "1-3"
+            case 40..<50 : levelData = 4
+            imageData = "1-4"
+            case 50..<60 : levelData = 5
+            imageData = "1-5"
+            case 60..<70 : levelData = 6
+            imageData = "1-6"
+            case 70..<80 : levelData = 7
+            imageData = "1-7"
+            case 80..<90 : levelData = 8
+            imageData = "1-8"
+            case 90..<100 : levelData = 9
+            imageData = "1-9"
+            default:
+                levelData = 10
+            imageData = "1-9"
+        }
+        UserDefaults.standard.set(levelData, forKey: "level")
+        UserDefaults.standard.set(imageData, forKey: "image")
+        
+        UserDefaults.standard.synchronize()
+        
+        abilityLabel.text = "LV\(levelData) \u{2022} 밥알 \(mealData)개 \u{2022} 물방울 \(waterData)개"
+        tamaImage.image = UIImage(named: imageData!)
+        bubbleLabel.text = storys.randomElement()
     }
     func configureLayout() {
         bubbleImage.snp.makeConstraints { make in
@@ -160,13 +259,13 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.tintColor  = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         
         bubbleImage.image = UIImage(named: "bubble")
-        bubbleLabel.text = "지금은 13:34 10시까지하면 9시간 남았나..? 끝내보자!!"
+        bubbleLabel.text = storys.randomElement()
         bubbleLabel.textAlignment = .center
         bubbleLabel.numberOfLines = 0
         bubbleLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         bubbleLabel.font = .boldSystemFont(ofSize: 15)
 
-        tamaImage.image = UIImage(named: "1-9")
+        tamaImage.image = UIImage(named: imageData ?? "1-1")
         
         tamaLabel.text = "방실방실 다마고치"
         tamaLabel.font = .boldSystemFont(ofSize: 15)
@@ -176,7 +275,7 @@ class MainViewController: UIViewController {
         tamaLabel.layer.cornerRadius = 5
         tamaLabel.textAlignment = .center
         
-        abilityLabel.text = "LV? \u{2022} 밥알 \(mealData[0])개 \u{2022} 물방울 \(waterData[0])개"
+        abilityLabel.text = "LV\(levelData) \u{2022} 밥알 \(mealData)개 \u{2022} 물방울 \(waterData)개"
         abilityLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         abilityLabel.font = .boldSystemFont(ofSize: 13)
         abilityLabel.textAlignment = .center
@@ -189,7 +288,7 @@ class MainViewController: UIViewController {
         
         mealSeparator.backgroundColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         
-        mealButton.setImage(UIImage(systemName: "drop.circle"), for: .normal)
+        mealButton.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
         mealButton.setTitle(" 밥먹기 ", for: .normal)
         mealButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
         mealButton.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
@@ -205,7 +304,7 @@ class MainViewController: UIViewController {
 
         waterSeparator.backgroundColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
 
-        waterButton.setImage(UIImage(systemName: "leaf.circle"), for: .normal)
+        waterButton.setImage(UIImage(systemName: "drop.circle"), for: .normal)
         waterButton.setTitle(" 물먹기 ", for: .normal)
         waterButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
         waterButton.layer.borderColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1).cgColor
@@ -220,10 +319,11 @@ class MainViewController: UIViewController {
     @objc func rightBarButtonClicked() {
         print(#function)
         //go 설정
+        navigationController?.pushViewController(SettingViewController(), animated: true)
     }
     @objc func mealTextFieldExit() {
         if (Int(mealTextField.text!) != nil) {
-            if !(Int(mealTextField.text!)! > 0 && (Int(mealTextField.text!)! < 50)) {
+            if !(Int(mealTextField.text!)! > 0 && (Int(mealTextField.text!)! < 100)) {
                 mealTextField.text = nil
             }
         }
